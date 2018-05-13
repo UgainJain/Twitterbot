@@ -138,7 +138,16 @@ def remove_stopwords(): ### rempves the stopwords from the retrieved tweets
                 filtered_sentence.append(w)
         msg = " ".join(map(str,filtered_sentence))      ### join the different words in a list to for a sentance
         data.text = msg
+    data1=[]    ### To Extend the words in the tweets
+    for data in tweet1:
+        data2 = data.text.split(" ", 30)        ###Spliting the data in different words
+        data1.extend(data2) ###extending in data 1
     print_tweets(tweet1)
+    word = Counter(data1)
+    print("Printing the top 10 words appearing in the tweets:")
+    top10 = word.most_common(10)
+    for data in top10:
+        print(data)
 
 
 auth = OAuthHandler(Consumer_key, Consumer_secret)      ###authorises the twitter handle
