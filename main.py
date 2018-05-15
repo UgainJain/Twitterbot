@@ -24,7 +24,6 @@ def retrieve_tweets() :   ####To retrieve the required tweets
     query = input("Enter the keyowords without hashtag :") ###ask for the query to search on twitter
     query = "#"+ query      ####Adding a "#" for better search results
     Tweets = api.search(q=query,screen_name ="@realdonaldtrump",  lang="en") ### Searching the twitter
-    print("Total no of persons effected by the Tweets:" + str(Tweets.count))
     return Tweets
 
 
@@ -36,6 +35,15 @@ def print_tweets(tweets):   #### For printing the tweets
         print("Done at :" +str(data.created_at))    ### Print the time for the creation of tweet
         print("Username :"+data.user.name)          ### Print the user name of the twitter user
         print("---------------------------------------------")
+
+
+def no_of_followers(Tweet):
+    print("Printing no of followers :-\nUSER        No of Followers")
+    total = 0
+    for data in Tweet:
+        print(data.user.name +"     "+str(data.user.followers_count))
+        total= total + data.user.followers_count
+    print("Total no of persons effected by the Tweets:" + str(total))
 
 
 def extract_for_user():        ###Extracts tweets for perticular user
