@@ -158,6 +158,10 @@ def remove_stopwords(): ### rempves the stopwords from the retrieved tweets
         print(data)
 
 
+def tweet_on_Twitter():
+    text = input("What do you want to tweet")
+    api.update_status(text)
+
 auth = OAuthHandler(Consumer_key, Consumer_secret)      ###authorises the twitter handle
 auth.set_access_token(Token_Key, Token_secret)          ###Passes the access tokens and the key
 
@@ -172,7 +176,8 @@ while  menu_display :
                            'occurring locations \n'
                            '5.Send a direct message to someone \n'
                            '6.Remove stopWords from retrieved tweets \n'
-                           '7.Exit \n'
+                           '7.Tweet a message\n'
+                           '8.Exit \n'
                            'Enter your choice :\t '))
 
     if menuchoice == 1:
@@ -190,10 +195,10 @@ while  menu_display :
     elif menuchoice == 6:
         remove_stopwords()
     elif menuchoice == 7:
+        tweet_on_Twitter()
+    elif menuchoice == 4 :
         menu_display = False
         exit()
-    elif menuchoice == 4 :
-        pass
     else:
         print("illegal choice, plz retry.")
 
