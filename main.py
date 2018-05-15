@@ -196,7 +196,7 @@ while  menu_display :
         remove_stopwords()
     elif menuchoice == 7:
         tweet_on_Twitter()
-    elif menuchoice == 4 :
+    elif menuchoice == 8 :
         menu_display = False
         exit()
     else:
