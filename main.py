@@ -23,7 +23,7 @@ Token_secret = ""
 def retrieve_tweets() :   ####To retrieve the required tweets
     query = input("Enter the keyowords without hashtag :") ###ask for the query to search on twitter
     query = "#"+ query      ####Adding a "#" for better search results
-    Tweets = api.search(q=query,screen_name ="@realdonaldtrump",  lang="en") ### Searching the twitter
+    Tweets = api.search(q=query,  lang="en", count = 200) ### Searching the twitter
     return Tweets
 
 
@@ -56,7 +56,7 @@ def search_for_keywords():      ### search the tweets  for perticular keyword in
     user = input("Enter the name of the user:")
     query = []      ### Stores the keywords to be searched for
     tweets= []  ### to store the tweets
-    tweets2 = []        ### to storre modified tweetss
+    tweets2 = []        ### to store modified tweets
     shows= True
     while shows :       ### to store the no of keywords till we want
         qw = input("Enter  the keywords ro be searched for :")
@@ -71,7 +71,7 @@ def search_for_keywords():      ### search the tweets  for perticular keyword in
             print("invalid input  \n"
                   "Taking default input as 'No' ")
             shows = False
-    result = api.user_timeline(screen_name=user,count = 200) ### searches for the 200 tweets by the perticular user
+    result = api.user_timeline(screen_name=user,count = 200) ### searches for the 200 tweets by the perticular user as the limit in tweepy is 200 only
     for data in result:
         tweets.append(data)
     oldest = tweets[-1].id      ### stores the id of the last tweet retrieved
